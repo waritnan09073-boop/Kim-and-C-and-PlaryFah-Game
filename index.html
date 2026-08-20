@@ -7,7 +7,6 @@
 <title>คิมandซีandปลายฟ้าไร้ยางมะตอย</title>
 
 <style>
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -23,10 +22,6 @@ body {
   overflow-x: hidden;
 }
 
-/* =========================
-   HEADER
-========================= */
-
 header {
   text-align: center;
   padding: 30px 15px 20px;
@@ -35,11 +30,7 @@ header {
 header h1 {
   font-size: clamp(26px, 6vw, 48px);
   font-weight: 900;
-
-  /* สีฟ้าอ่อน */
   color: #65cbea;
-
-  /* ไม่มีเงา */
   text-shadow: none;
 }
 
@@ -63,7 +54,6 @@ header p {
 }
 
 @keyframes fade {
-
   from {
     opacity: 0;
     transform: translateY(10px);
@@ -73,7 +63,6 @@ header p {
     opacity: 1;
     transform: translateY(0);
   }
-
 }
 
 .container {
@@ -96,15 +85,12 @@ header p {
   display: grid;
   grid-template-columns:
     repeat(auto-fit, minmax(250px, 1fr));
-
   gap: 18px;
 }
 
 .card {
   background: rgba(255,255,255,.94);
-
   border-radius: 24px;
-
   padding: 22px;
 
   box-shadow:
@@ -123,53 +109,41 @@ header p {
 
 .icon {
   font-size: 55px;
-
   text-align: center;
-
   margin-bottom: 8px;
 }
 
 .card h2 {
   text-align: center;
-
   margin-bottom: 10px;
-
   color: #62bddd;
 }
 
 .card p {
   text-align: center;
-
   color: #555;
-
   min-height: 45px;
 }
 
 .open-game {
   display: block;
-
   margin-top: 16px;
 
   background: #7bd7f3;
-
   color: white;
 
   text-decoration: none;
-
   text-align: center;
 
   padding: 13px;
-
   border-radius: 14px;
 
   font-weight: bold;
-
   transition: .2s;
 }
 
 .open-game:hover {
   background: #62c7e8;
-
   transform: scale(1.03);
 }
 
@@ -179,7 +153,6 @@ header p {
 
 .bottom-nav {
   position: fixed;
-
   left: 50%;
   bottom: 12px;
 
@@ -194,7 +167,6 @@ header p {
   padding: 8px;
 
   display: flex;
-
   gap: 8px;
 
   box-shadow:
@@ -225,7 +197,6 @@ header p {
 
 .nav-btn.active {
   background: #8bdcf6;
-
   color: white;
 }
 
@@ -237,11 +208,14 @@ header p {
   position: relative;
 
   height: calc(100vh - 170px);
-
   min-height: 500px;
 
   overflow: hidden;
 }
+
+/* =========================
+   LETTER
+========================= */
 
 .letter {
   position: absolute;
@@ -258,6 +232,9 @@ header p {
   cursor: pointer;
 
   z-index: 10;
+
+  touch-action: none;
+  user-select: none;
 }
 
 .envelope {
@@ -324,7 +301,7 @@ header p {
 }
 
 /* =========================
-   LETTER FLY
+   FLY IN
 ========================= */
 
 .letter.fly-in {
@@ -360,7 +337,6 @@ header p {
       translate(-50%,-50%)
       rotate(0deg);
   }
-
 }
 
 /* =========================
@@ -389,7 +365,6 @@ header p {
       translate(-50%,-50%)
       rotate(25deg);
   }
-
 }
 
 /* =========================
@@ -427,157 +402,46 @@ header p {
       translate(-50%,-50%)
       rotate(0deg);
   }
-
 }
 
 /* =========================
-   ✨ WARP BEFORE OPEN
+   😈 LETTER ESCAPE
 ========================= */
 
-.letter.warp {
-
+.letter.escape {
   animation:
-    letterWarp .65s
-    cubic-bezier(.2,.8,.3,1)
-    forwards;
+    escapeLetter .35s cubic-bezier(.2,.8,.3,1);
 }
 
-@keyframes letterWarp {
+@keyframes escapeLetter {
 
   0% {
-
     transform:
       translate(-50%,-50%)
       scale(1)
       rotate(0deg);
-
-    opacity: 1;
-
-    filter:
-      blur(0)
-      brightness(1);
   }
 
-  25% {
-
+  35% {
     transform:
       translate(-50%,-50%)
       scale(1.12)
-      rotate(-4deg);
-
-    filter:
-      blur(1px)
-      brightness(1.3);
-  }
-
-  50% {
-
-    transform:
-      translate(-50%,-50%)
-      scale(.8)
-      rotate(6deg);
-
-    opacity: .85;
-
-    filter:
-      blur(3px)
-      brightness(1.7);
-  }
-
-  75% {
-
-    transform:
-      translate(-50%,-50%)
-      scale(1.25)
       rotate(-8deg);
-
-    opacity: .45;
-
-    filter:
-      blur(7px)
-      brightness(2);
   }
 
   100% {
-
     transform:
       translate(-50%,-50%)
-      scale(0)
-      rotate(20deg);
-
-    opacity: 0;
-
-    filter:
-      blur(15px)
-      brightness(3);
+      scale(.95)
+      rotate(8deg);
   }
-
 }
 
 /* =========================
-   WARP RING
-========================= */
-
-.warp-ring {
-
-  position: absolute;
-
-  left: 50%;
-  top: 50%;
-
-  width: 40px;
-  height: 40px;
-
-  border-radius: 50%;
-
-  border:
-    4px solid rgba(255,255,255,.9);
-
-  transform:
-    translate(-50%,-50%)
-    scale(0);
-
-  opacity: 0;
-
-  z-index: 8;
-
-  pointer-events: none;
-}
-
-.warp-ring.active {
-
-  animation:
-    warpRing .7s ease-out forwards;
-}
-
-@keyframes warpRing {
-
-  0% {
-
-    transform:
-      translate(-50%,-50%)
-      scale(.2);
-
-    opacity: 1;
-  }
-
-  100% {
-
-    transform:
-      translate(-50%,-50%)
-      scale(7);
-
-    opacity: 0;
-  }
-
-}
-
-/* =========================
-   OPEN HINT
+   HINT
 ========================= */
 
 .open-hint {
-
   position: absolute;
 
   top: 75%;
@@ -594,6 +458,8 @@ header p {
 
   animation:
     pulse 1s infinite alternate;
+
+  padding: 0 15px;
 }
 
 @keyframes pulse {
@@ -605,7 +471,6 @@ header p {
   to {
     opacity: 1;
   }
-
 }
 
 /* =========================
@@ -613,7 +478,6 @@ header p {
 ========================= */
 
 .message-box {
-
   display: none;
 
   position: absolute;
@@ -646,7 +510,6 @@ header p {
 @keyframes messageOpen {
 
   from {
-
     opacity: 0;
 
     transform:
@@ -656,7 +519,6 @@ header p {
   }
 
   to {
-
     opacity: 1;
 
     transform:
@@ -664,29 +526,21 @@ header p {
       scale(1)
       rotate(0);
   }
-
 }
 
 .message-box h2 {
-
   color: #62bddd;
-
   margin-bottom: 15px;
 }
 
 .message-box p {
-
   font-size: 21px;
-
   font-weight: bold;
-
   margin-bottom: 18px;
 }
 
 .message-box textarea {
-
   width: 100%;
-
   height: 120px;
 
   resize: none;
@@ -704,12 +558,10 @@ header p {
 }
 
 .message-box textarea:focus {
-
   border-color: #7bd7f3;
 }
 
 .done {
-
   width: 100%;
 
   margin-top: 12px;
@@ -732,12 +584,10 @@ header p {
 }
 
 .done:hover {
-
   background: #62c7e8;
 }
 
 .result {
-
   display: none;
 
   margin-top: 15px;
@@ -766,18 +616,15 @@ header p {
     min-height: 520px;
   }
 
+  .envelope::before {
+    border-left-width: 91px;
+    border-right-width: 91px;
+  }
 }
-
 </style>
 </head>
 
-
 <body>
-
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header>
 
@@ -796,10 +643,7 @@ header p {
      HOME
 ========================= -->
 
-<main
-  id="homePage"
-  class="page active"
->
+<main id="homePage" class="page active">
 
   <div class="container">
 
@@ -807,9 +651,9 @@ header p {
       🎬 ผลงานของค่าย
     </h2>
 
-
     <div class="games">
 
+      <!-- ละครภาค 2 -->
 
       <div class="card">
 
@@ -836,6 +680,8 @@ header p {
       </div>
 
 
+      <!-- เกมตอบคำถามนิ้ว -->
+
       <div class="card">
 
         <div class="icon">
@@ -861,6 +707,8 @@ header p {
       </div>
 
 
+      <!-- ละครภาค 1 -->
+
       <div class="card">
 
         <div class="icon">
@@ -885,7 +733,6 @@ header p {
 
       </div>
 
-
     </div>
 
   </div>
@@ -894,26 +741,12 @@ header p {
 
 
 <!-- =========================
-     LETTER
+     LETTER PAGE
 ========================= -->
 
-<section
-  id="letterPage"
-  class="page"
->
+<section id="letterPage" class="page">
 
   <div class="letter-area">
-
-
-    <!-- วงแหวนวาร์ป -->
-
-    <div
-      id="warpRing"
-      class="warp-ring"
-    ></div>
-
-
-    <!-- จดหมาย -->
 
     <div
       id="letter"
@@ -936,8 +769,6 @@ header p {
       📩 รอจดหมายตกลงมา...
     </div>
 
-
-    <!-- เนื้อหาจดหมาย -->
 
     <div
       id="messageBox"
@@ -991,7 +822,6 @@ header p {
     หน้าหลัก
   </button>
 
-
   <button
     id="letterBtn"
     class="nav-btn"
@@ -1031,9 +861,6 @@ const hint =
 const messageBox =
   document.getElementById("messageBox");
 
-const warpRing =
-  document.getElementById("warpRing");
-
 
 /* =========================
    VARIABLES
@@ -1044,6 +871,10 @@ let letterStarted = false;
 let letterCanOpen = false;
 
 let letterOpened = false;
+
+let escapeCount = 0;
+
+const maxEscapes = 3;
 
 
 /* =========================
@@ -1099,14 +930,14 @@ function startLetterAnimation() {
 
   letterOpened = false;
 
+  escapeCount = 0;
+
 
   messageBox.style.display = "none";
 
   letter.style.display = "block";
 
   hint.style.display = "block";
-
-  warpRing.classList.remove("active");
 
 
   letter.className = "letter";
@@ -1116,7 +947,7 @@ function startLetterAnimation() {
     "💌 จดหมายกำลังบินมา...";
 
 
-  /* บินเข้าชนจอ */
+  /* บินเข้ามา */
 
   setTimeout(() => {
 
@@ -1125,7 +956,7 @@ function startLetterAnimation() {
   }, 100);
 
 
-  /* ตกออกจากจอ */
+  /* ตกออกไป */
 
   setTimeout(() => {
 
@@ -1153,94 +984,271 @@ function startLetterAnimation() {
   }, 3100);
 
 
-  /* เปิดให้กด */
+  /* เริ่มจับได้ */
 
   setTimeout(() => {
 
     letterCanOpen = true;
 
     hint.textContent =
-      "🚨 กดจดหมายตอนนี้เลย!";
+      "😈 ลองกดดูสิ...";
 
   }, 5200);
 
-
-  /* หมดเวลา */
-
-  setTimeout(() => {
-
-    if (!letterOpened) {
-
-      letterCanOpen = false;
-
-      hint.textContent =
-        "💨 ไม่ทันแล้ว! จดหมายบินหนีไปแล้ว 😂";
+}
 
 
-      setTimeout(() => {
+/* =========================
+   RANDOM POSITION
+========================= */
 
-        restartLetter();
+function moveLetterAway() {
 
-      }, 1500);
+  const area =
+    document.querySelector(".letter-area");
+
+  const areaRect =
+    area.getBoundingClientRect();
+
+
+  const letterWidth =
+    letter.offsetWidth;
+
+  const letterHeight =
+    letter.offsetHeight;
+
+
+  const padding = 20;
+
+
+  const maxX =
+    areaRect.width -
+    letterWidth -
+    padding * 2;
+
+
+  const maxY =
+    areaRect.height -
+    letterHeight -
+    padding * 2;
+
+
+  let x =
+    Math.random() * maxX + padding;
+
+  let y =
+    Math.random() * maxY + padding;
+
+
+  /*
+     ทำให้ตำแหน่งใหม่ไม่ใกล้
+     กับตำแหน่งเดิมมากเกินไป
+  */
+
+  let currentX =
+    letter.offsetLeft;
+
+  let currentY =
+    letter.offsetTop;
+
+
+  let attempts = 0;
+
+  while (
+    Math.abs(x - currentX) < 120 &&
+    Math.abs(y - currentY) < 100 &&
+    attempts < 20
+  ) {
+
+    x =
+      Math.random() * maxX + padding;
+
+    y =
+      Math.random() * maxY + padding;
+
+    attempts++;
+
+  }
+
+
+  letter.style.left =
+    x + "px";
+
+  letter.style.top =
+    y + "px";
+
+  letter.style.transform =
+    "none";
+
+
+  letter.classList.remove("escape");
+
+  void letter.offsetWidth;
+
+  letter.classList.add("escape");
+
+}
+
+
+/* =========================
+   POINTER APPROACH
+========================= */
+
+function checkPointerDistance(clientX, clientY) {
+
+  if (
+    !letterCanOpen ||
+    letterOpened
+  ) {
+    return;
+  }
+
+
+  const rect =
+    letter.getBoundingClientRect();
+
+
+  const centerX =
+    rect.left + rect.width / 2;
+
+  const centerY =
+    rect.top + rect.height / 2;
+
+
+  const distance =
+    Math.sqrt(
+      Math.pow(clientX - centerX, 2) +
+      Math.pow(clientY - centerY, 2)
+    );
+
+
+  /*
+     ถ้าเข้าใกล้จดหมาย
+  */
+
+  if (
+    distance < 105 &&
+    escapeCount < maxEscapes
+  ) {
+
+    escapeCount++;
+
+
+    hint.textContent =
+      escapeCount === 1
+        ? "😂 ฮั่นแน่! เกือบโดนแล้ว!"
+        : escapeCount === 2
+        ? "🤣 ยังจะกดอีกเหรอ!"
+        : "😈 ครั้งสุดท้ายแล้วมั้ง...";
+
+
+    moveLetterAway();
+
+  }
+
+}
+
+
+/* =========================
+   MOUSE
+========================= */
+
+document.addEventListener(
+  "mousemove",
+  (event) => {
+
+    checkPointerDistance(
+      event.clientX,
+      event.clientY
+    );
+
+  }
+);
+
+
+/* =========================
+   TOUCH
+========================= */
+
+document.addEventListener(
+  "touchstart",
+  (event) => {
+
+    if (
+      event.touches &&
+      event.touches.length > 0
+    ) {
+
+      checkPointerDistance(
+        event.touches[0].clientX,
+        event.touches[0].clientY
+      );
 
     }
 
-  }, 8200);
-
-}
+  },
+  { passive: true }
+);
 
 
 /* =========================
    CLICK LETTER
 ========================= */
 
-letter.addEventListener("click", () => {
+letter.addEventListener(
+  "click",
+  () => {
 
-  if (!letterCanOpen || letterOpened) {
+    if (
+      !letterCanOpen ||
+      letterOpened
+    ) {
+      return;
+    }
 
-    return;
+
+    /*
+       ถ้ายังหนีไม่ครบ
+       ให้หนีก่อน
+    */
+
+    if (escapeCount < maxEscapes) {
+
+      escapeCount++;
+
+      hint.textContent =
+        "😂 โดนหลอกอีกแล้ว!";
+
+
+      moveLetterAway();
+
+      return;
+
+    }
+
+
+    /*
+       ครบจำนวนแล้ว
+       ยอมให้เปิด
+    */
+
+    letterOpened = true;
+
+    letterCanOpen = false;
+
+
+    letter.style.display =
+      "none";
+
+    hint.style.display =
+      "none";
+
+
+    messageBox.style.display =
+      "block";
 
   }
-
-
-  letterOpened = true;
-
-  letterCanOpen = false;
-
-
-  /*
-     เริ่มวาร์ป
-  */
-
-  warpRing.classList.remove("active");
-
-  void warpRing.offsetWidth;
-
-  warpRing.classList.add("active");
-
-
-  letter.classList.add("warp");
-
-
-  hint.textContent =
-    "🌀 วาร์ปจดหมาย...";
-
-
-  /*
-     หลังวาร์ปเสร็จ
-  */
-
-  setTimeout(() => {
-
-    letter.style.display = "none";
-
-    hint.style.display = "none";
-
-    messageBox.style.display = "block";
-
-  }, 620);
-
-});
+);
 
 
 /* =========================
@@ -1256,12 +1264,15 @@ function finishLetter() {
     document.getElementById("result");
 
 
-  if (answer.value.trim() === "") {
+  if (
+    answer.value.trim() === ""
+  ) {
 
     result.textContent =
       "😂 ยังไม่ได้พิมพ์อะไรเลยนะ!";
 
-    result.style.display = "block";
+    result.style.display =
+      "block";
 
     return;
 
@@ -1271,7 +1282,8 @@ function finishLetter() {
   result.textContent =
     "✅ รับคำตอบแล้ว! ขอบคุณสำหรับไอเดียครับ Dev จะเอาไปคิดต่อ 😂";
 
-  result.style.display = "block";
+  result.style.display =
+    "block";
 
 }
 
@@ -1288,14 +1300,24 @@ function restartLetter() {
 
   letterOpened = false;
 
+  escapeCount = 0;
 
-  letter.style.display = "block";
 
-  hint.style.display = "block";
+  letter.style.display =
+    "block";
 
-  messageBox.style.display = "none";
+  hint.style.display =
+    "block";
 
-  warpRing.classList.remove("active");
+  messageBox.style.display =
+    "none";
+
+
+  letter.style.left = "";
+
+  letter.style.top = "";
+
+  letter.style.transform = "";
 
 
   startLetterAnimation();
